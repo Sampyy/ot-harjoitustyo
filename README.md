@@ -1,6 +1,7 @@
-# Onko asia niin?
+# Ohjelmistotekniikka
 
-Asia ei **välttämättä** ole niin, vaikka *hän* niin sanookin.
+### Viikko1
 
-**Ovathan kaikki joskus väärässä**
 
+[komentorivi.txt](https://github.com/Sampyy/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
+[Gitlog.txt}(https://github.com/Sampyy/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
