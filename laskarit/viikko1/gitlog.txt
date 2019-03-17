@@ -1,0 +1,125 @@
+	commit 0085f78f738bd754fd3082c5d915ad80e718b960
+Author: Sami <samialeksi.tuomela@gmail.com>
+Date:   Sun Mar 17 20:11:23 2019 +0200
+
+    poistetut file1, file2 --> file22
+
+ tiedostoja/.file32.swp       | Bin 0 -> 1024 bytes
+ tiedostoja/file2             |   0
+ tiedostoja/{file1 => file22} |   0
+ tiedostoja/file3             |   2 +-
+ 4 files changed, 1 insertion(+), 1 deletion(-)
+
+commit 1e31603c3c6b5a6a855b5bf4e2260e0de57446f4
+Author: Sami <samialeksi.tuomela@gmail.com>
+Date:   Sun Mar 17 20:10:31 2019 +0200
+
+    f
+
+ tiedostoja/file3 | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 8121b9e1642cec3ee260a3e98a3dfa0bdcf226a3
+Author: Sami <samialeksi.tuomela@gmail.com>
+Date:   Sun Mar 17 20:06:34 2019 +0200
+
+    hakemisto lisaatty
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit ef7f54732d360a19a446a5b915f3d1fae8f8983d
+Author: Sami <samialeksi.tuomela@gmail.com>
+Date:   Sun Mar 17 20:01:20 2019 +0200
+
+    muutoksia muutoksia
+
+ eka.txt    | 2 +-
+ kolmas.txt | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+commit 75c168485cfedc25a14b538539f3dc55d3574ce0
+Author: Sami <samialeksi.tuomela@gmail.com>
+Date:   Sun Mar 17 19:59:21 2019 +0200
+
+    Tiedosto muutettu eka
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit e0563390bd3d75755eb8ddeedb2d5cfc18218741
+Author: Sami <samialeksi.tuomela@gmail.com>
+Date:   Sun Mar 17 19:58:05 2019 +0200
+
+    Toinen poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 405154c9343aae7d6d14cc166acd2d6fd59f5173
+Author: Sami <samialeksi.tuomela@gmail.com>
+Date:   Sun Mar 17 19:56:07 2019 +0200
+
+    Tiedostoa muokattu
+
+ tiedosto.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+commit 06818642ad57ddbfee830593680bcecafee1602d
+Author: Sami <samialeksi.tuomela@gmail.com>
+Date:   Sun Mar 17 19:55:12 2019 +0200
+
+    Tekstiä lisätty
+
+ tiedosto.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+commit ebad7ae35ee7e93720ac7c9d5a17f865aac8b2b3
+Author: Sami <samialeksi.tuomela@gmail.com>
+Date:   Sun Mar 17 19:49:50 2019 +0200
+
+    hakemisto tehty
+
+ stuff/viittoma.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 47b933789bf3a989a74c32c06871d3eadabad1b6
+Author: Sami <samialeksi.tuomela@gmail.com>
+Date:   Sun Mar 17 19:48:43 2019 +0200
+
+    Toista ja kolmatta muokattu2
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit c1d9941e934b21c10944dc63d6a03ce92cd93a1d
+Author: Sami <samialeksi.tuomela@gmail.com>
+Date:   Sun Mar 17 19:47:01 2019 +0200
+
+    kolmas lisätty
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 48b5383be17d27eb7a6ed9b995b01a45750d6f18
+Author: Sami <samialeksi.tuomela@gmail.com>
+Date:   Sun Mar 17 19:44:28 2019 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 2 ++
+ toinen.txt   | 0
+ 2 files changed, 2 insertions(+)
+
+commit 40046c6835407078ec14c209e3f3e17e9301c72e
+Author: Sami <samialeksi.tuomela@gmail.com>
+Date:   Sun Mar 17 19:40:52 2019 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
