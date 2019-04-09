@@ -7,7 +7,7 @@ package minesweeper.ui;
 
 import minesweeper.domain.Table;
 import minesweeper.domain.Cell;
-
+import java.util.Scanner;
 /**
  *
  * @author Sami
@@ -19,18 +19,25 @@ public class Main {
         //Prints the table to verify that it is created correctly. 9 = mine, others have the correct amount of mines in adjacent cells.
         int x = 9;
         int y = 9;
-        Table table = new Table(x, y, 15);
+        Table table = new Table(x, y, 1);
         for (int i = 0; i < x; i++){
             System.out.println("");
             for (int j = 0; j < y; j++){
                 System.out.print(table.getNumber(i, j));
             }
         }
+        Scanner lukija = new Scanner(System.in);
         System.out.println("");
-        Cell cell = new Cell();
-        cell.setContains(9);
-        System.out.println(cell.getContains());
-        System.out.println(cell.checkCell());
+        table.printTable();
+        System.out.println("");
+        while (table.gameIsOn == true){
+            System.out.println("Give the cell you wish to check as x,y");
+            String[] split = lukija.nextLine().split(",");
+            int first = Integer.valueOf(split[0]);
+            int second = Integer.valueOf(split[1]);
+            table.chooseCell(first, second);
+            
+        }
     }
     
 }

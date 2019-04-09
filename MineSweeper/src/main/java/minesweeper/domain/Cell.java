@@ -23,11 +23,13 @@ public class Cell {
     
     public boolean checkCell(){
         this.checked = true;
-        if (this.contains == 9){
+        if (contains == 9){
             return true;
             //lose the game
         }
-        return false;
+        else {
+            return false;
+        }
     }
 
     public boolean isChecked() {
@@ -53,6 +55,15 @@ public class Cell {
     public void setFlagged(boolean flagged) {
         this.flagged = flagged;
     }
-    
+    @Override
+    public String toString(){
+        if (this.checked == false){
+            return "-";
+        }
+        
+        else {
+            return Integer.toString(this.contains);
+        }
+    }
     
 }
