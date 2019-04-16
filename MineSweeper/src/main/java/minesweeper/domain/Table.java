@@ -29,7 +29,7 @@ public class Table {
         while (this.mines < mines){
             for (int i = 0; i < x; i++){
                 for (int j = 0 ; j < x; j++){
-                    if (random.nextInt((x * y / mines))==1 && this.mines < mines){
+                    if (random.nextInt((x * y / mines))==1 && this.mines < mines && table[i][j].getContains()!=9){
                         table[i][j].setContains(9);
                         this.mines++;
                     }
@@ -65,27 +65,27 @@ public class Table {
     }
     
     public void checkEmpty(int x, int y){
+        table[x][y].setChecked(true);
         if (x > 0){
-            if (table[x-1][y].getContains()==0){
+            if (table[x-1][y].getContains()==0 && table[x-1][y].checked==false){
                 checkEmpty(x-1, y);
             }
         }
-        if (x < table.length-1){
-            if (table[x+1][y].getContains() == 0){
+        if (x < table[0].length-1){
+            if (table[x+1][y].getContains() == 0 && table[x+1][y].checked==false){
                 checkEmpty(x+1,y);
             }
         }
         if (y > 0){
-            if (table[x][y-1].getContains()==0){
+            if (table[x][y-1].getContains()==0 && table[x][y-1].checked==false){
                 checkEmpty(x, y-1);
             }
         }
-        if (y < table.length-1){
-            if (table[x][y+1].getContains() == 0){
+        if (y < table[0].length-1){
+            if (table[x][y+1].getContains() == 0 && table[x][y+1].checked==false){
                 checkEmpty(x,y+1);
             }
-        }
-        table[x][y].setChecked(true);
+        }   
     }
     public void setNumbers(Cell[][] table){
         for (int i = 0; i < table.length; i++){
@@ -111,6 +111,18 @@ public class Table {
             }
         }
         return minesNearby;
+    }
+    
+    public void setFlag(int x, int y){
+        if (this.table[x][y].flagged==true){
+            this.table[x][y].setFlagged(false);
+        }
+        else{
+            this.table[x][y].setFlagged(true);
+        }
+    }
+    public boolean getFlag(int x, int y){
+        return this.table[x][y].flagged;
     }
     
     

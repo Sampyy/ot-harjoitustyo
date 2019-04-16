@@ -26,16 +26,18 @@ public class TableTest {
     }
     @Test
     public void constructorPlacesCorrectAmountOfMines(){
-        Table table = new Table(3, 3, 3);
+        int xy = 15;
+        int minesSet = 45;
+        Table table = new Table(xy, xy, minesSet);
         int mines = 0;
-        for (int i = 0; i < 3; i++){
-            for(int j = 0; j < 3; j++){
+        for (int i = 0; i < xy; i++){
+            for(int j = 0; j < xy; j++){
                 if (table.getNumber(i, j)==9){
                     mines++;
                 }
             }
         }
-        assertEquals(3, mines);
+        assertEquals(minesSet, mines);
     }
     @Test
     public void setMineWorks(){
@@ -55,6 +57,36 @@ public class TableTest {
         assertEquals(true, true);
     }
     
+    @Test
+    public void setFlagSetsFlags(){
+        Table table = new Table(3,3,0);
+        table.setFlag(2, 1);
+        int flags = 0;
+        for (int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++){
+                if (table.getFlag(i, j) == true){
+                    flags++;
+                }
+            }
+        }
+        assertEquals(1, flags);
+    }
+    
+    @Test
+    public void chooseCellWorksWhen0(){
+        Table table = new Table(3,3,0);
+        table.chooseCell(1, 1);
+        int checkedCells = 0;
+        Cell[][] tableInt = table.getTable();
+        for (int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++){
+                if (tableInt[i][j].checked == true){
+                    checkedCells++;
+                }
+            }
+        }
+        assertEquals(9, checkedCells);
+    }
     
 
 

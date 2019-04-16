@@ -57,10 +57,13 @@ public class Cell {
     }
     @Override
     public String toString(){
-        if (this.checked == false){
+        
+        if (this.flagged == true){
+            return "F";
+        }
+        else if (this.checked == false){
             return "-";
         }
-        
         else {
             return Integer.toString(this.contains);
         }
