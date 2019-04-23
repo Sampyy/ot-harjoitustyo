@@ -35,6 +35,12 @@ public class Cell {
     public boolean isChecked() {
         return checked;
     }
+    
+    public boolean isMine(){
+        if (this.contains == 9){
+            return true;
+        }return false;
+    }
 
     public void setChecked(boolean checked) {
         this.checked = checked;

@@ -87,6 +87,20 @@ public class TableTest {
         }
         assertEquals(9, checkedCells);
     }
+    @Test
+    public void wonWorks(){
+        Table table = new Table(9, 9, 5);
+        for (int i = 0; i < 9; i++){
+            for(int j = 0; j < 9; j++){
+                if (table.getNumber(i,j) == 9){
+                    table.setFlag(i, j);
+                }
+            }
+        }
+        Boolean won = table.won();
+        
+        assertEquals(true, won);
+    }
     
 
 

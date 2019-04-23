@@ -4,66 +4,144 @@
  * and open the template in the editor.
  */
 package minesweeper.domain;
+import minesweeper.ui.Board;
+import minesweeper.ui.Actions;
 import java.util.Random;
+import java.awt.BorderLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Sami
  */
-public class Table {
+public class Table extends JFrame{
     private Cell[][] table;
-    private int mines;
+    private int width, height, mines;
     private Random random = new Random();
     public Boolean gameIsOn = true;
+    private Board board;
+    private JButton reset;
     
     public Table(Cell[][] table){
         this.table = table;
     }
     public Table(int x, int y, int mines){
+        this.width = x;
+        this.height = y;
+        this.mines = mines;
         this.table = new Cell[x][y];
         for (int i = 0; i < x; i++){
             for(int j = 0; j < y; j++){
                 table[i][j] = new Cell();
             }
         }
-        this.mines = 0;
-        while (this.mines < mines){
-            for (int i = 0; i < x; i++){
-                for (int j = 0 ; j < x; j++){
-                    if (random.nextInt((x * y / mines))==1 && this.mines < mines && table[i][j].getContains()!=9){
+        reset();
+        board = new Board(this);
+        reset = new JButton("Reset");
+        
+        add(board, BorderLayout.CENTER);
+        add(reset,BorderLayout.SOUTH);
+        
+        reset.addActionListener(new Actions(this));
+        /*for ( int i = 0; i < width; i++){
+            for (int j = 0; j < height; j++){
+                table[i][j].setChecked(true);
+            }
+        }*/
+        
+        setTitle("Minesweeper");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
+        pack();
+        setVisible(true);
+    }
+    
+    public void reset(){
+        gameIsOn = true;
+        int minesSet = 0;
+        while (minesSet < mines){
+            for (int i = 0; i < this.width; i++){
+                for (int j = 0 ; j < this.height; j++){
+                    if (random.nextInt((this.width * this.height / mines))==1 && minesSet < mines && table[i][j].getContains()!=9){
                         table[i][j].setContains(9);
-                        this.mines++;
+                        minesSet++;
                     }
                 }
             }
         }   
-    setNumbers(this.table);
+        setNumbers(this.table);
+    }
+    public void refresh(){
+        board.repaint();
     }
     public int getNumber(int x, int y){
         return table[x][y].getContains();
     }
-    
-    public void chooseCell(int x, int y){
-        boolean isChecked = table[x][y].checked;
-        if (isChecked == false){
-            boolean cell = table[x][y].checkCell();
-            if (getNumber(x, y) == 0){
-                checkEmpty(x,y);
-            }
-            if (cell == true){
-                //loseGame();
-                System.out.println("hävisit pelin");
-                gameIsOn = false;
-            }
-            else{
-                printTable();
-            }
-        }
-        else{
-            System.out.println("Solu on jo tarkistettu");
-        }
-        
+    public int getx(){
+        return width;
+    }
+    public int gety(){
+        return height;
     }
     
+    public void chooseCell(int x, int y){
+        if (table[x][y].isFlagged()){
+            return;
+        }
+        table[x][y].setChecked(true);
+        resetUnneededFlags();
+        refresh();
+        if (table[x][y].getContains()==0){
+            checkEmpty(x,y);
+        }
+        if (table[x][y].getContains()==9){
+            lose();
+        }
+        if (won()){
+            win();
+        }
+    }
+    public void lose(){
+        gameIsOn=false;
+        for (int i = 0; i < width; i++){
+            for (int j = 0; j < height; j++){
+                if (!table[i][j].isChecked()){
+                    table[i][j].setChecked(true);
+                }
+            }
+        }
+        refresh();
+        JOptionPane.showMessageDialog(null, "You hit a mine and lost.");
+        reset();
+    }
+    public void win(){
+        gameIsOn=false;
+        for (int i = 0; i < width; i++){
+            for (int j = 0; j < height; j++){
+                if (!table[i][j].isChecked()){
+                    table[i][j].setChecked(true);
+                }
+            }
+        }
+        refresh();
+        JOptionPane.showMessageDialog(null, "Congratulations, you won.");
+        reset();
+    }
+    public boolean won(){
+        int flags = 0;
+        for (int i = 0; i < width; i++){
+            for (int j = 0; j < height; j++){
+                if (table[i][j].getContains()==9 && table[i][j].isFlagged()){
+                    flags++;
+                }
+            }
+        }
+        if (flags == this.mines){
+            return true;
+        }
+            return false;
+    }
     public void checkEmpty(int x, int y){
         table[x][y].setChecked(true);
         if (x > 0){
@@ -114,11 +192,23 @@ public class Table {
     }
     
     public void setFlag(int x, int y){
-        if (this.table[x][y].flagged==true){
+        if (this.table[x][y].isFlagged()){
             this.table[x][y].setFlagged(false);
         }
         else{
             this.table[x][y].setFlagged(true);
+        }
+        resetUnneededFlags();
+        refresh();
+    }
+    
+    private void resetUnneededFlags(){
+        for (int i = 0; i < width ; i++){
+            for (int j = 0; j < height; j++){
+                if (table[i][j].isChecked()){
+                    table[i][j].setFlagged(false);
+                }
+            }
         }
     }
     public boolean getFlag(int x, int y){
