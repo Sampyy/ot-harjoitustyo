@@ -1,6 +1,8 @@
 # Käyttöohje
 
-Lataa tiedosto (linkki)[]
+Lataa tiedosto [Release](https://github.com/Sampyy/ot-harjoitustyo/releases/tag/viikko5)
+sekä 
+[resources](https://github.com/Sampyy/ot-harjoitustyo/tree/master/MineSweeper/resources)
 
 ### Vaatimukset
 
