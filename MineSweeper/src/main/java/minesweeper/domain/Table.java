@@ -12,7 +12,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 /**
- *
+ * Provides the playing fields functionality, uses Cells as the pieces of the field
+ * @see minesweeper.domain.Cell;
+ * 
  * @author Sami
  */
 public class Table extends JFrame {
@@ -26,6 +28,16 @@ public class Table extends JFrame {
     public Table(Cell[][] table) {
         this.table = table;
     }
+    
+    /**
+     * Method sets up a minesweeper game with the given values
+     * 
+     * @param  x   width of the field
+     * @param  y   height of the field
+     * @param  mines the amount of mines set on the field
+    
+
+    */
     public Table(int x, int y, int mines) {
         this.width = x;
         this.height = y;
@@ -52,6 +64,10 @@ public class Table extends JFrame {
         setVisible(true);
     }
     
+    /**
+     * 
+     * method starts resets the game, rearranging the mines and covering every cell.
+     */
     public void reset() {
         gameIsOn = true;
         this.table = new Cell[width][height];
@@ -62,8 +78,8 @@ public class Table extends JFrame {
         }
         int minesSet = 0;
         while (minesSet < mines) {
-            for (int i = 0 ; i < this.width ; i++) {
-                for (int j = 0 ; j < this.height ; j++) {
+            for (int i = 0; i < this.width; i++) {
+                for (int j = 0; j < this.height; j++) {
                     if (random.nextInt((this.width * this.height / mines)) == 1 && minesSet < mines && table[i][j].getContains() != 9) {
                         table[i][j].setContains(9);
                         minesSet++;
@@ -86,6 +102,14 @@ public class Table extends JFrame {
         return height;
     }
     
+    /** 
+     * Method handles the event of choosing a cell to check,revealing the chosen cell,
+     * if it's a mine losing the game, and if it is empty also revealing every other
+     * connected empty cell.
+     * 
+     * @param x the x coordinate of the chosen cell in the field
+     * @param y the y coordinate of the chosen cell in the field
+     */
     public void chooseCell(int x, int y) {
         if (table[x][y].isFlagged()) {
             return;
@@ -143,15 +167,20 @@ public class Table extends JFrame {
         }
         return false;
     }
-    public void checkEmpty (int x , int y) {
+    /**
+     * Handles checking for connected empty cells
+     * @param x the x coordinate of the cell
+     * @param y the y coordinate of the cell
+     */
+    public void checkEmpty(int x , int y) {
         table[x][y].setChecked(true);
         if (x > 0) {
-            if (table[x - 1][y].getContains() == 0 && table[x - 1][y].checked == false){
+            if (table[x - 1][y].getContains() == 0 && table[x - 1][y].checked == false) {
                 checkEmpty(x - 1 , y);
             }
         }
         if (x < table[0].length - 1) {
-            if (table[x +1 ][y].getContains() == 0 && table[x + 1][y].checked == false) {
+            if (table[x + 1][y].getContains() == 0 && table[x + 1][y].checked == false) {
                 checkEmpty(x + 1 , y);
             }
         }
@@ -166,6 +195,13 @@ public class Table extends JFrame {
             }
         }   
     }
+    /** 
+     * Handles setting numbers with the help of setNumber, which finds out the 
+     * number of a specific cell
+     * 
+     * @see   minesweeper.domain.Table#setNumber(minesweeper.domain.Cell[][], int, int) 
+     * @param table the field currently in use
+     */
     public void setNumbers(Cell[][] table) {
         for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table[0].length; j++) {
@@ -176,15 +212,21 @@ public class Table extends JFrame {
             }
         }
     }
-    
-    public int setNumber (Cell[][] table, int i, int j) {
-        int minesNearby=0;
-        for (int h = - 1; h <= 1; h++) {
+    /**
+     * Finds out which number the given cell should get.
+     * @param table table in use
+     * @param i the coordinate of the cell
+     * @param j the coordinate of the cell
+     * @return 
+     */
+    public int setNumber(Cell[][] table, int i, int j) {
+        int minesNearby = 0;
+        for (int h = -1; h <= 1; h++) {
             for (int w = -1; w <= 1; w++) {
                 if (i + h < 0 || i + h >= table.length || j + w < 0 || j + w >= table.length) {
                     continue;
                 }
-                else if(table[h + i][w + j].getContains() == 9) {
+                else if (table[h + i][w + j].getContains() == 9) {
                     minesNearby++;
                 }
             }
@@ -192,6 +234,11 @@ public class Table extends JFrame {
         return minesNearby;
     }
     
+    /**
+     * Sets a flag in the (x,y) cell, or removes it if already flagged
+     * @param x the x coordinate of the cell
+     * @param y the y coordinate of the cell
+     */
     public void setFlag(int x, int y) {
         if (this.table[x][y].isFlagged()) {
             this.table[x][y].setFlagged(false);
@@ -202,7 +249,10 @@ public class Table extends JFrame {
         resetUnneededFlags();
         refresh();
     }
-    
+    /**
+     * Removes flags from cells that are checked, for example if an empty cells it checked
+     * but it gets revealed
+     */
     private void resetUnneededFlags() {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
@@ -212,6 +262,12 @@ public class Table extends JFrame {
             }
         }
     }
+    /**
+     * returns whether a cell is flagged
+     * @param x the x coordinate of the cell
+     * @param y the y coordinate of the cell
+     * @return boolean flagged
+     */
     public boolean getFlag(int x, int y) {
         return this.table[x][y].flagged;
     }
@@ -224,6 +280,7 @@ public class Table extends JFrame {
     public void setMine(int x, int y) {
         this.table[x][y].setContains(9);
     }
+    
     public Cell[][] getTable() {
         return this.table;
     }

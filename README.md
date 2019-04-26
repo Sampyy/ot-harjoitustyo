@@ -1,9 +1,11 @@
 # Miinaharava
 
 Sovellus on perinteinen miinaharava.
+## [Release 0.1](https://github.com/Sampyy/ot-harjoitustyo/releases/tag/viikko5)
 
 [Vaatimusmäärittely](https://github.com/Sampyy/ot-harjoitustyo/blob/master/MineSweeper/dokumentaatio/vaatimusmaarittely.md)
 
+[Käyttöohje](https://github.com/Sampyy/ot-harjoitustyo/blob/master/MineSweeper/dokumentaatio/kayttoohjeet.md)
 
 [Tuntikirjanpito](https://github.com/Sampyy/ot-harjoitustyo/blob/master/MineSweeper/dokumentaatio/tuntikirjanpito.md)
 

@@ -58,6 +58,22 @@ public class TableTest {
     }
     
     @Test
+    public void checkEmptyWorksEmptyField() {
+        Table table = new Table(3, 3, 0);
+        table.checkEmpty(0, 0);
+        int checkeds = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (table.getChecked(i, j)){
+                    checkeds++;
+                }
+            }
+        }
+        assertEquals(9, checkeds);
+    }
+    
+    
+    @Test
     public void setFlagSetsFlags() {
         Table table = new Table(3,3,0);
         table.setFlag(2, 1);

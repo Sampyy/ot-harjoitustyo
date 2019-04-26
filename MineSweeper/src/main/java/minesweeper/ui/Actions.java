@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 /**
- *
+ * Handles the interactivity of the minefield
  * @author Sami
  */
 public class Actions implements ActionListener, MouseListener {
@@ -27,14 +27,14 @@ public class Actions implements ActionListener, MouseListener {
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (e.getButton() == 1){
+        if (e.getButton() == 1) {
             int x = e.getX() / 20;
             int y = e.getY() / 20;
             
             table.chooseCell(y, x);
             
         }
-        if (e.getButton()==3) {
+        if (e.getButton() == 3) {
             int x = e.getX() / 20;
             int y = e.getY() / 20;
             

@@ -6,7 +6,7 @@
 package minesweeper.domain;
 
 /**
- *
+ * 
  * @author Sami
  */
 public class Cell {
@@ -20,22 +20,14 @@ public class Cell {
         this.flagged = false;
 
     }
-    
-    public boolean checkCell() {
-        this.checked = true;
-        if (contains == 9) {
-            return true;
-            //lose the game
-        }
-        else {
-            return false;
-        }
-    }
 
     public boolean isChecked() {
         return checked;
     }
-    
+    /**
+     * 
+     * @return returns whether the cell is a mine or not
+     */
     public boolean isMine() {
         if (this.contains == 9) {
             return true;
@@ -62,6 +54,11 @@ public class Cell {
     public void setFlagged(boolean flagged) {
         this.flagged = flagged;
     }
+    /**
+     * not in use anymore
+     * @return returns F if the field is flagged, - if it hasn't been checked yet
+     * and the value otherwise
+     */
     @Override
     public String toString() {
         

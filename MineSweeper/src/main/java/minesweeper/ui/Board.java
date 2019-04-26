@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 /**
- *
+ * Provides the graphics to be used in the gamefield
  * @author Sami
  */
 public class Board extends JPanel {
@@ -25,12 +25,17 @@ public class Board extends JPanel {
         addMouseListener(new Actions(t));
         setPreferredSize(new Dimension(cells.length * 20, cells[0].length * 20));
     }
+    /** 
+     * Loads the images to be used in the field from src/resources, and figures 
+     * which of the images to use in the situation.
+     * @param g 
+     */
     @Override
     public void paintComponent(Graphics g) {
         cells = table.getTable();
         Image[] img = new Image[14];
-        for (int i = 0; i < 14; i++){
-            String path = "src/resources/" + i + ".png";
+        for (int i = 0; i < 14; i++) {
+            String path = "resources/" + i + ".png";
             img[i] = (new ImageIcon(path)).getImage();
         }
         for (int i = 0; i < cells.length; i++) {
@@ -42,7 +47,7 @@ public class Board extends JPanel {
                     if (curr.isMine() && !table.gameIsOn) {
                         imgToDraw = 11;
                     }
-                    else if (!table.gameIsOn){
+                    else if (!table.gameIsOn) {
                         imgToDraw = 13;
                     }
                     else {
