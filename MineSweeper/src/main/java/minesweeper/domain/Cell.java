@@ -21,9 +21,9 @@ public class Cell {
 
     }
     
-    public boolean checkCell(){
+    public boolean checkCell() {
         this.checked = true;
-        if (contains == 9){
+        if (contains == 9) {
             return true;
             //lose the game
         }
@@ -36,10 +36,11 @@ public class Cell {
         return checked;
     }
     
-    public boolean isMine(){
-        if (this.contains == 9){
+    public boolean isMine() {
+        if (this.contains == 9) {
             return true;
-        }return false;
+        }
+        return false;
     }
 
     public void setChecked(boolean checked) {
@@ -62,12 +63,12 @@ public class Cell {
         this.flagged = flagged;
     }
     @Override
-    public String toString(){
+    public String toString() {
         
-        if (this.flagged == true){
+        if (this.flagged == true) {
             return "F";
         }
-        else if (this.checked == false){
+        else if (this.checked == false) {
             return "-";
         }
         else {

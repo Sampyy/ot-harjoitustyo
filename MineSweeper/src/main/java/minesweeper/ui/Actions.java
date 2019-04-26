@@ -16,45 +16,45 @@ import java.awt.event.MouseListener;
 public class Actions implements ActionListener, MouseListener {
     private Table table;
     
-    public Actions(Table t){
+    public Actions(Table t) {
         table = t;
     }
     @Override
-    public void actionPerformed(ActionEvent e){
+    public void actionPerformed(ActionEvent e) {
         table.reset();
         table.refresh();
         
     }
     @Override
-    public void mouseClicked (MouseEvent e){
+    public void mouseClicked(MouseEvent e) {
         if (e.getButton() == 1){
-            int x = e.getX()/20;
-            int y = e.getY()/20;
+            int x = e.getX() / 20;
+            int y = e.getY() / 20;
             
             table.chooseCell(y, x);
             
         }
-        if (e.getButton()==3){
-            int x = e.getX()/20;
-            int y = e.getY()/20;
+        if (e.getButton()==3) {
+            int x = e.getX() / 20;
+            int y = e.getY() / 20;
             
             table.setFlag(y, x);
         }
         table.refresh();
     }
     @Override
-    public void mouseEntered(MouseEvent e){
+    public void mouseEntered(MouseEvent e) {
     }
  
     @Override
-    public void mouseExited(MouseEvent e){
+    public void mouseExited(MouseEvent e) {
     }
  
     @Override
-    public void mousePressed(MouseEvent e){
+    public void mousePressed(MouseEvent e) {
     }
  
     @Override
-    public void mouseReleased(MouseEvent e){
+    public void mouseReleased(MouseEvent e) {
     }
 }
