@@ -17,13 +17,14 @@ import javax.swing.JPanel;
 public class Board extends JPanel {
     private Table table;
     private  Cell[][] cells;
+    private final int cellSize = 20;
     
     public Board(Table t) {
         table = t;
         cells = t.getTable();
         
         addMouseListener(new Actions(t));
-        setPreferredSize(new Dimension(cells.length * 20, cells[0].length * 20));
+        setPreferredSize(new Dimension(cells.length * cellSize, cells[0].length * cellSize));
     }
     /** 
      * Loads the images to be used in the field from src/resources, and figures 
@@ -66,7 +67,7 @@ public class Board extends JPanel {
                 if (curr.isChecked() && !curr.isMine()) {
                     imgToDraw = curr.getContains();
                 }
-                g.drawImage(img[imgToDraw], (j * 20), (i * 20), this);
+                g.drawImage(img[imgToDraw], (j * cellSize), (i * cellSize), this);
             }
         }
     }
