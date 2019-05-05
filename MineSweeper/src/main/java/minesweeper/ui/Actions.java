@@ -20,12 +20,19 @@ public class Actions implements ActionListener, MouseListener {
     public Actions(Table t) {
         table = t;
     }
+    /**
+     * provids the functionality for reset button
+     * @param e action event
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         table.reset();
-        table.refresh();
-        
+        table.refresh();   
     }
+    /**
+     * If left clicked, checks the cell. If rightclicked, will flag or unflag depending on if the cell is flagged.
+     * @param e mouseevent
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getButton() == 1) {

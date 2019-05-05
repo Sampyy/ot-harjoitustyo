@@ -6,11 +6,11 @@ Sovellus on klassinen miinaharava
 
 ## Käyttöliittymäluonnos
 
-Sovellus koostuu kahdesta näkymästä: Ensimmäisessä näkymässä valitaan asetukset (miinojen määrä, kentän koko) ja toisessa näkymässä on itse peli.
+Sovellus koostuu yhdestä näkymästä: Näkymässä on pelikenttä, nappula jolla voidaan resetoida peli, sekä asetukset kentän reunalla.
 
 ## Perusversion tarjoama toiminnallisuus
 
-- Käyttäjä voi valita ainakin yhdestä valinnasta kentän sekä miinojen määrän. Käyttäjä ei voi valita enempää miinoja kuin mitä ruutuja on.
+- Käyttäjä voi valita slidereilla kentän koon, sekä miinojen määrän. Miinojen määrä on suhteutettu ruudukon kokoon.
 
 - Itse pelissä käyttäjä voi merkitä oikealla hiirenpainalluksella miinoja, sekä valita vasemmalla "avattavan" ruudun.
 

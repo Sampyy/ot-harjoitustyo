@@ -6,21 +6,26 @@
 package minesweeper.domain;
 
 /**
- * 
+ * Cells contain whether the different squares in the game are checked, mines, or flagged.
  * @author Sami
  */
 public class Cell {
-    boolean checked;
-    int contains;
-    boolean flagged;
+    private boolean checked;
+    private int contains;
+    private boolean flagged;
     //contains 0 = empty, 1-8 amount of mines in the adjacent cells, 9 = mine
-    
+    /**
+     * Cells are not checked or flagged by default
+     */
     public Cell()   {
         this.checked = false;
         this.flagged = false;
 
     }
-
+    /**
+     * 
+     * @return whether the cell has been checked or not
+     */
     public boolean isChecked() {
         return checked;
     }
@@ -34,15 +39,21 @@ public class Cell {
         }
         return false;
     }
-
+    /**
+     * 
+     * @param checked sets whether the cell is checked or not
+     */
     public void setChecked(boolean checked) {
         this.checked = checked;
     }
-
+    
     public int getContains() {
         return contains;
     }
-
+    /**
+     * sets contains
+     * @param contains 0 = empty, 1-8 amount of mines in the adjacent cells, 9 = mine
+     */
     public void setContains(int contains) {
         this.contains = contains;
     }

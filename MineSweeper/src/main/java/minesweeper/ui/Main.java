@@ -22,7 +22,7 @@ public class Main {
     
     
     public static void main(String[] args) {
-        new Table (10,10, 10);
+        new Table(10, 10, 10);
         
     }
     

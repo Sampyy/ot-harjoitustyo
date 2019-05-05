@@ -15,7 +15,7 @@ import javax.swing.Timer;
 import javax.swing.JSlider;
 /**
  * Provides the playing fields functionality, uses Cells as the pieces of the field
- * @see minesweeper.domain.Cell;
+ * 
  * 
  * @author Sami
  */
@@ -29,13 +29,9 @@ public class Table extends JFrame {
     private JButton reset;
     private JSlider size, difficulty;
     
-    
     public Table(Cell[][] table) {
         this.table = table;
-        this.wonGames = 0;
-        this.lostGames = 0;
     }
-    
     /**
      * Method sets up a minesweeper game with the given values
      * 
@@ -60,11 +56,6 @@ public class Table extends JFrame {
         add(reset, BorderLayout.SOUTH);
         
         reset.addActionListener(new Actions(this));
-        /*for ( int i = 0; i < width; i++){
-            for (int j = 0; j < height; j++){
-                table[i][j].setChecked(true);
-            }
-        }*/
         reset();
     }
     
@@ -75,13 +66,13 @@ public class Table extends JFrame {
     public void reset() {
         gameIsOn = true;
         this.table = new Cell[width][height];
-        if (this.size.getValue() != this.width){
+        if (this.size.getValue() != this.width) {
             this.width = this.size.getValue();
             this.height = this.size.getValue();
             this.table = new Cell[width][height];
         }
-        if (difficulty.getValue() != mines){
-            this.mines = difficulty.getValue()*size.getValue()*size.getValue()/100;
+        if (difficulty.getValue() != mines) {
+            this.mines = difficulty.getValue() * size.getValue() * size.getValue() / 100;
         }    
         this.board = new Board(this);
             
@@ -147,18 +138,25 @@ public class Table extends JFrame {
             return;
         }
         table[x][y].setChecked(true);
-        resetUnneededFlags();
-        refresh();
+        
+        
         if (table[x][y].getContains() == 0) {
             checkEmpty(x , y);
+            resetUnneededFlags();
         }
+        refresh();
         if (table[x][y].getContains() == 9) {
             lose();
         }
         if (won()) {
             win();
         }
+        
     }
+    /**
+     * sets the gamestate to off, reveals all unchecked cells, adds a game to the lost games and tells you that you lost. Then resets the game
+     *
+     */
     public void lose() {
         gameIsOn = false;
         for (int i = 0; i < width; i++) {
@@ -170,9 +168,12 @@ public class Table extends JFrame {
         }
         lostGames++;
         refresh();
-        JOptionPane.showMessageDialog(null, "You hit a mine and lost.\n Won Games: " + wonGames+ " Lost Games: " + lostGames);
+        JOptionPane.showMessageDialog(null, "You hit a mine and lost.\n Won Games: " + wonGames + " Lost Games: " + lostGames);
         reset();
     }
+    /**
+     * sets the gamestate to off, reveals all unchecked cells, adds a game to the won games and tells you that you won. Then resets the game.
+     */
     public void win() {
         gameIsOn = false;
         for (int i = 0; i < width; i++) {
@@ -184,9 +185,13 @@ public class Table extends JFrame {
         }
         wonGames++;
         refresh();
-        JOptionPane.showMessageDialog(null, "Congratulations, you won.\n Won Games: " + wonGames+ " Lost Games: " + lostGames);
+        JOptionPane.showMessageDialog(null, "Congratulations, you won.\n Won Games: " + wonGames + " Lost Games: " + lostGames);
         reset();
     }
+    /**
+     * Checks if the game is in a state where you have won (all mines marked, no unnecessary flags)
+     * @return true if won, false otherwise
+     */
     public boolean won() {
         int flags = 0;
         for (int i = 0; i < width; i++) {
@@ -209,22 +214,22 @@ public class Table extends JFrame {
     public void checkEmpty(int x , int y) {
         table[x][y].setChecked(true);
         if (x > 0) {
-            if (table[x - 1][y].getContains() == 0 && table[x - 1][y].checked == false) {
+            if (table[x - 1][y].getContains() == 0 && table[x - 1][y].isChecked() == false) {
                 checkEmpty(x - 1 , y);
             }
         }
         if (x < table[0].length - 1) {
-            if (table[x + 1][y].getContains() == 0 && table[x + 1][y].checked == false) {
+            if (table[x + 1][y].getContains() == 0 && table[x + 1][y].isChecked() == false) {
                 checkEmpty(x + 1 , y);
             }
         }
         if (y > 0) {
-            if (table[x][y - 1].getContains() == 0 && table[x][y - 1].checked == false) {
+            if (table[x][y - 1].getContains() == 0 && table[x][y - 1].isChecked() == false) {
                 checkEmpty(x , y - 1);
             }
         }
         if (y < table[0].length - 1) {
-            if (table[x][y + 1].getContains() == 0 && table[x][y + 1].checked == false) {
+            if (table[x][y + 1].getContains() == 0 && table[x][y + 1].isChecked() == false) {
                 checkEmpty(x , y + 1);
             }
         }   
@@ -251,7 +256,7 @@ public class Table extends JFrame {
      * @param table table in use
      * @param i the coordinate of the cell
      * @param j the coordinate of the cell
-     * @return 
+     * @return returns the amount of mines nearby
      */
     public int setNumber(Cell[][] table, int i, int j) {
         int minesNearby = 0;
@@ -303,13 +308,12 @@ public class Table extends JFrame {
      * @return boolean flagged
      */
     public boolean getFlag(int x, int y) {
-        return this.table[x][y].flagged;
+        return this.table[x][y].isFlagged();
     }
     
     public boolean getChecked(int x, int y) {
         return this.table[x][y].isChecked();
     }
-    
     
     public void setMine(int x, int y) {
         this.table[x][y].setContains(9);
@@ -317,6 +321,15 @@ public class Table extends JFrame {
     
     public Cell[][] getTable() {
         return this.table;
+    }
+    /**
+     * used for tests
+     * @param number number to be set to the cell
+     * @param x coordinates of the cell
+     * @param y coordinates of the cell
+     */
+    public void setCell(int number, int x, int y) {
+        this.table[x][y].setContains(number);
     }
     
     public void printTable() {

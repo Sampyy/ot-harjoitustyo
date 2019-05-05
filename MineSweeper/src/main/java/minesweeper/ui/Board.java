@@ -29,7 +29,7 @@ public class Board extends JPanel {
     /** 
      * Loads the images to be used in the field from src/resources, and figures 
      * which of the images to use in the situation.
-     * @param g 
+     * 
      */
     @Override
     public void paintComponent(Graphics g) {
