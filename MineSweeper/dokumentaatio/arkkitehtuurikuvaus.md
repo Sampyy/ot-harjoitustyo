@@ -3,7 +3,7 @@
 ### Rakenne
 Ohjelman rakenne kerrosarkkitehtuurina on kaksikerroksinen, se sisältää pakkaukset minesweeper.domain sekä minesweeper.ui. Minesweeper.domain huolehtii sovelluslogiikasta, ja minesweeper.ui taas huolehtii sovelluksen käyttöliittymän elementeistä.
 
-<img src="https://raw.githubusercontent.com/Sampyy/ot-harjoitustyo/master/MineSweeper/dokumentaatio/kuvat/kerroskaavio.png", width="150">
+![](https://raw.githubusercontent.com/Sampyy/ot-harjoitustyo/master/MineSweeper/dokumentaatio/kuvat/kerroskaavio.png)
 
 
 ### Käyttöliittymä 
