@@ -11,6 +11,8 @@ import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
+import javax.swing.JSlider;
 /**
  * Provides the playing fields functionality, uses Cells as the pieces of the field
  * @see minesweeper.domain.Cell;
@@ -19,14 +21,19 @@ import javax.swing.JOptionPane;
  */
 public class Table extends JFrame {
     private Cell[][] table;
-    private int width, height, mines;
+    private int width, height, mines, wonGames, lostGames;
     private Random random = new Random();
     public Boolean gameIsOn = true;
+    private Actions actions;
     private Board board;
     private JButton reset;
+    private JSlider size, difficulty;
+    
     
     public Table(Cell[][] table) {
         this.table = table;
+        this.wonGames = 0;
+        this.lostGames = 0;
     }
     
     /**
@@ -36,18 +43,20 @@ public class Table extends JFrame {
      * @param  y   height of the field
      * @param  mines the amount of mines set on the field
     
-
     */
     public Table(int x, int y, int mines) {
         this.width = x;
         this.height = y;
         this.mines = mines;
+        this.wonGames = 0;
+        this.lostGames = 0;
+        difficulty = new JSlider(JSlider.HORIZONTAL, 5, 50, 10);
+        size = new JSlider(JSlider.VERTICAL, 5, 50, 10);
         
-        reset();
-        board = new Board(this);
         reset = new JButton("Reset");
-        
-        add(board, BorderLayout.CENTER);
+         
+        add(size, BorderLayout.WEST);
+        add(difficulty, BorderLayout.NORTH);
         add(reset, BorderLayout.SOUTH);
         
         reset.addActionListener(new Actions(this));
@@ -56,12 +65,7 @@ public class Table extends JFrame {
                 table[i][j].setChecked(true);
             }
         }*/
-        
-        setTitle("Minesweeper");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
-        pack();
-        setVisible(true);
+        reset();
     }
     
     /**
@@ -71,11 +75,40 @@ public class Table extends JFrame {
     public void reset() {
         gameIsOn = true;
         this.table = new Cell[width][height];
+        if (this.size.getValue() != this.width){
+            this.width = this.size.getValue();
+            this.height = this.size.getValue();
+            this.table = new Cell[width][height];
+        }
+        if (difficulty.getValue() != mines){
+            this.mines = difficulty.getValue()*size.getValue()*size.getValue()/100;
+        }    
+        this.board = new Board(this);
+            
+        add(board, BorderLayout.CENTER);
+        setTitle("Minesweeper");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
+        pack();
+        setVisible(true);
+        placeCells();
+        placeMines();
+        setNumbers(this.table);
+    }
+    /**
+     * Places Cells into the table.
+     */
+    public void placeCells() {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 table[i][j] = new Cell();
             }
         }
+    }
+    /**
+     * Places mines into the table
+     */
+    public void placeMines() {
         int minesSet = 0;
         while (minesSet < mines) {
             for (int i = 0; i < this.width; i++) {
@@ -87,7 +120,6 @@ public class Table extends JFrame {
                 }
             }
         }   
-        setNumbers(this.table);
     }
     public void refresh() {
         board.repaint();
@@ -95,10 +127,10 @@ public class Table extends JFrame {
     public int getNumber(int x, int y) {
         return table[x][y].getContains();
     }
-    public int getx() {
+    public int getwidth() {
         return width;
     }
-    public int gety() {
+    public int getheight() {
         return height;
     }
     
@@ -136,8 +168,9 @@ public class Table extends JFrame {
                 }
             }
         }
+        lostGames++;
         refresh();
-        JOptionPane.showMessageDialog(null, "You hit a mine and lost.");
+        JOptionPane.showMessageDialog(null, "You hit a mine and lost.\n Won Games: " + wonGames+ " Lost Games: " + lostGames);
         reset();
     }
     public void win() {
@@ -149,8 +182,9 @@ public class Table extends JFrame {
                 }
             }
         }
+        wonGames++;
         refresh();
-        JOptionPane.showMessageDialog(null, "Congratulations, you won.");
+        JOptionPane.showMessageDialog(null, "Congratulations, you won.\n Won Games: " + wonGames+ " Lost Games: " + lostGames);
         reset();
     }
     public boolean won() {
@@ -203,8 +237,8 @@ public class Table extends JFrame {
      * @param table the field currently in use
      */
     public void setNumbers(Cell[][] table) {
-        for (int i = 0; i < table.length; i++) {
-            for (int j = 0; j < table[0].length; j++) {
+        for (int i = 0; i < this.height; i++) {
+            for (int j = 0; j < this.width; j++) {
                 if (table[i][j].getContains() == 9) {
                     continue;
                 }

@@ -15,6 +15,7 @@ import java.awt.event.MouseListener;
  */
 public class Actions implements ActionListener, MouseListener {
     private Table table;
+    private final int cellSize = 20;
     
     public Actions(Table t) {
         table = t;
@@ -28,15 +29,15 @@ public class Actions implements ActionListener, MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getButton() == 1) {
-            int x = e.getX() / 20;
-            int y = e.getY() / 20;
+            int x = e.getX() / cellSize;
+            int y = e.getY() / cellSize;
             
             table.chooseCell(y, x);
             
         }
         if (e.getButton() == 3) {
-            int x = e.getX() / 20;
-            int y = e.getY() / 20;
+            int x = e.getX() / cellSize;
+            int y = e.getY() / cellSize;
             
             table.setFlag(y, x);
         }
