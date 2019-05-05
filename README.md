@@ -7,7 +7,11 @@ Sovellus on perinteinen miinaharava.
 
 [Käyttöohje](https://github.com/Sampyy/ot-harjoitustyo/blob/master/MineSweeper/dokumentaatio/kayttoohjeet.md)
 
+[Testausdokumentti](https://github.com/Sampyy/ot-harjoitustyo/blob/master/MineSweeper/dokumentaatio/testausdokumentti.md)
+
 [Tuntikirjanpito](https://github.com/Sampyy/ot-harjoitustyo/blob/master/MineSweeper/dokumentaatio/tuntikirjanpito.md)
+
+[Arkktehtuurikuvaus](https://github.com/Sampyy/ot-harjoitustyo/blob/master/MineSweeper/dokumentaatio/arkkitehtuurikuvaus.md)
 
 
 
@@ -15,24 +19,24 @@ Sovellus on perinteinen miinaharava.
 
 ### Testaus
 
-Testit suoritetaan komennolla
+JUnit testit suoritetaan komennolla
 
 ```
 mvn test
 ```
 
-Testikattavuusraportti luodaan komennolla
+Testikattavuusraportti saa luotua komennolla 
 
 ```
 mvn jacoco:report
 ```
-Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto _target/site/jacoco/index.html_
+Testikattavuusraportin löytää kohteesta target/site/jacoco/index.html 
 
 ```
 mvn package
 ```
 
-generoi hakemistoon _target_ suoritettavan jar-tiedoston _MineSweeper-1.0-SNAPSHOT.jar_
+generoi hakemistoon target suoritettavan jar-tiedoston MineSweeper-1.0-SNAPSHOT.jar
 
 
 JavaDoc generoidaan komennolla
@@ -40,10 +44,12 @@ JavaDoc generoidaan komennolla
 ```
 mvn javadoc:javadoc
 ```
+javadoc löytyy reittiä target/site/apidocs  
 
-Checkstyle raportni saa komennolla
+
+Checkstyle raportin saa komennolla
 
 ```
  mvn jxr:jxr checkstyle:checkstyle
 ```
-
+reportti löytyy kansiosta /target/site/checkstyle.html
