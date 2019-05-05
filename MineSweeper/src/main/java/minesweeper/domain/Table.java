@@ -29,9 +29,7 @@ public class Table extends JFrame {
     private JButton reset;
     private JSlider size, difficulty;
     
-    public Table(Cell[][] table) {
-        this.table = table;
-    }
+
     /**
      * Method sets up a minesweeper game with the given values
      * 
@@ -338,14 +336,7 @@ public class Table extends JFrame {
         return lostGames;
     }
     
-    public void printTable() {
-        for (int i = 0; i < table.length; i++) {
-            System.out.println("");
-            for (int j = 0; j < table[0].length; j++) {
-                System.out.print(table[i][j].toString());
-            }
-        }
-    }
+
 }
     
 

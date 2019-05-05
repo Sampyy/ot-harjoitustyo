@@ -65,23 +65,4 @@ public class Cell {
     public void setFlagged(boolean flagged) {
         this.flagged = flagged;
     }
-    /**
-     * not in use anymore
-     * @return returns F if the field is flagged, - if it hasn't been checked yet
-     * and the value otherwise
-     */
-    @Override
-    public String toString() {
-        
-        if (this.flagged == true) {
-            return "F";
-        }
-        else if (this.checked == false) {
-            return "-";
-        }
-        else {
-            return Integer.toString(this.contains);
-        }
-    }
-    
 }

@@ -98,6 +98,13 @@ public class TableTest {
         assertEquals(1, flags);
     }
     @Test
+    public void setFlagRemovesFlagIfSet() {
+        Table table = new Table(10, 10, 10);
+        table.setFlag(2, 1);
+        table.setFlag(2, 1);
+        assertEquals(false, table.getFlag(2, 1));
+    }
+    @Test
     public void chooseCellChecksCell() {
         Table table = new Table(10, 10, 10);
         for (int i = 0; i < 10; i++) {
@@ -110,16 +117,11 @@ public class TableTest {
         assertEquals(true, table.getChecked(5, 0));
     }
     @Test
-    public void ChooseCellCanWin() {
+    public void chooseCellDoesNothingIfFlagged() {
         Table table = new Table(10, 10, 10);
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                table.setCell(0, i, j);
-            }
-        }
-        table.setMine(1, 1);
         table.setFlag(1, 1);
-        assertEquals(true, table.won());
+        table.chooseCell(1, 1);
+        assertEquals(false, table.getChecked(1, 1));
     }
     @Test
     public void wonWorks(){
