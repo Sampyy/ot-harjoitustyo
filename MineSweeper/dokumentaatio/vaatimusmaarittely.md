@@ -14,6 +14,8 @@ Sovellus koostuu yhdestä näkymästä: Näkymässä on pelikenttä, nappula jol
 
 - Itse pelissä käyttäjä voi merkitä oikealla hiirenpainalluksella miinoja, sekä valita vasemmalla "avattavan" ruudun.
 
+
+
 ## Jatkokehitysideoita
 
 - lisää asetuksia (esim. Aikarajoitus siirroissa)

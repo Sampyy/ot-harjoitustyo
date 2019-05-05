@@ -12,5 +12,10 @@ Ohjelma käynnistetään komennolla
 java -jar minesweeper.jar
 ...
 
-Tällä hetkellä peli muodostuu 10 x 10 kokoisesta kentästä, jossa on 10 miinaa. Vasemmalla klikkauksella paljastetaan ruutu, ja oikealla klikkauksella asetetaan lippu.
-Peli päättyy osuttaessa miinaan tai asetettaessa kymmenes oikein menevä lippu.
+### Pelaaminen
+
+Peli alkaa oletuksena 10x10 kokoisesta ruudukosta, jossa on 10 miinaa. Pelin vaikeutta voi säätää käyttämällä vasemmalla ja ylhäällä olevia slidereita.
+
+Vasemmalla oleva slideri kasvattaa pelikentän kokoa välillä 5-50 ruutua. Ylhäällä oleva slideri taas lisää miinojen määrää pelikentällä, välillä 5-50% kentästä. Reset nappulalla saa resetoitua kentän, sekä slidereilla tehdyt muutokset voimaan.
+
+Pelin tavoitteena on saada kaikki miinat merkattua. Miinoja merkataan oikealla klikkauksella, ja ruutuja "avataan" vasemmalla klikkauksella. Mikäli avaa miinan, häviää pelin. Peli päättyy kun täsmälleen kaikki miinat ovat merkittynä. Mikäli tarpeettomia miinoja on merkittynä, ei peli pääty ennen kuin tarpeettomat merkit on poistettu.

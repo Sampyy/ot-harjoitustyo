@@ -97,8 +97,30 @@ public class TableTest {
         }
         assertEquals(1, flags);
     }
-    
-
+    @Test
+    public void chooseCellChecksCell() {
+        Table table = new Table(10, 10, 10);
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                table.setCell(0, i, j);
+            }
+        }
+        table.setMine(1, 0);
+        table.chooseCell(5, 0);
+        assertEquals(true, table.getChecked(5, 0));
+    }
+    @Test
+    public void ChooseCellCanWin() {
+        Table table = new Table(10, 10, 10);
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                table.setCell(0, i, j);
+            }
+        }
+        table.setMine(1, 1);
+        table.setFlag(1, 1);
+        assertEquals(true, table.won());
+    }
     @Test
     public void wonWorks(){
         Table table = new Table(10, 10, 10);
@@ -112,5 +134,20 @@ public class TableTest {
         Boolean won = table.won();
         
         assertEquals(true, won);
+    }
+    
+    @Test
+    public void loseAddsLosses() {
+        Table table = new Table(10, 10, 10);
+        table.lose();
+        table.lose();
+        assertEquals(2, table.getLostGames());
+    }
+    @Test
+    public void winAddsWins() {
+        Table table = new Table(10, 10, 10);
+        table.win();
+        table.win();
+        assertEquals(2, table.getWonGames());
     }
 }

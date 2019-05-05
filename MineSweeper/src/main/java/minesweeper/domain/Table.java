@@ -125,6 +125,7 @@ public class Table extends JFrame {
         return height;
     }
     
+    
     /** 
      * Method handles the event of choosing a cell to check,revealing the chosen cell,
      * if it's a mine losing the game, and if it is empty also revealing every other
@@ -137,9 +138,7 @@ public class Table extends JFrame {
         if (table[x][y].isFlagged()) {
             return;
         }
-        table[x][y].setChecked(true);
-        
-        
+        table[x][y].setChecked(true);   
         if (table[x][y].getContains() == 0) {
             checkEmpty(x , y);
             resetUnneededFlags();
@@ -150,8 +149,7 @@ public class Table extends JFrame {
         }
         if (won()) {
             win();
-        }
-        
+        }  
     }
     /**
      * sets the gamestate to off, reveals all unchecked cells, adds a game to the lost games and tells you that you lost. Then resets the game
@@ -330,6 +328,14 @@ public class Table extends JFrame {
      */
     public void setCell(int number, int x, int y) {
         this.table[x][y].setContains(number);
+    }
+
+    public int getWonGames() {
+        return wonGames;
+    }
+
+    public int getLostGames() {
+        return lostGames;
     }
     
     public void printTable() {

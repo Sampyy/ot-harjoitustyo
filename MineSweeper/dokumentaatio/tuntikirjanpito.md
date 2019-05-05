@@ -7,4 +7,6 @@
 | 16.4. | 5    | Lisätty tekstimuotoinen tapa pelata, sekä joitakin testejä. |
 | 23.4. | 5    | Lisätty grafiikat peliin, sekä lisätty toiminnallisuutta  |
 | 26.4. | 5    | Lisätty testausta, korjattu checkstyle erroreita, lisätty dokumentaatiota |
-| yht   | 30   | |
+| 4.5.  | 4    | Lisätty dokumentaatiota, lisätty javadocs, korjattu koodia paremmaksi  | 
+| 5.5.  | 8    | Lisätty arkkitehtuurikuvaus, päivitetty muuta dokumentointia, lisätty javadocsia, lisätty testejä, paranneltu koodia |
+| yht   | 42   | |
