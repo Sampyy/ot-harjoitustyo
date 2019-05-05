@@ -8,6 +8,8 @@ Sovelluslogiikkaa on testattu automatisoiduilla JUnit-testeillä. Testit ovat [T
 
 Sovelluslogiikan testauksen rivikattavuus on 98% ja haarautumakattavuus 94%.
 
+<img src="https://raw.githubusercontent.com/Sampyy/ot-harjoitustyo/master/MineSweeper/dokumentaatio/kuvat/testikattavuus.png", width="1000">
+
 
 Haarautumakattavuudesta jää tarkistamatta että chooseCell kutsun yhteydessä tarkistetaan, onko voitettu tai hävitty. Kuitenkin voiton toiminta on tarkistettu toisessa testissä, ja häviön toiminta on tarkistettu sadoilla häviöillä.
 

@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa tiedosto [Release](https://github.com/Sampyy/ot-harjoitustyo/releases/tag/viikko5)
+Lataa tiedosto [Release](https://github.com/Sampyy/ot-harjoitustyo/releases/tag/1.0)
 
 Pura pakatun tiedoston jar tiedosto minefield sekä kansio resources samaan paikkaan. Minefield toimii vain, mikäli samassa hakemistossa on kuvat sisältävä resources tiedosto.
 
