@@ -1,8 +1,8 @@
 # Käyttöohje
 
 Lataa tiedosto [Release](https://github.com/Sampyy/ot-harjoitustyo/releases/tag/viikko5)
-sekä 
-[resources](https://github.com/Sampyy/ot-harjoitustyo/tree/master/MineSweeper/resources)
+
+Pura pakatun tiedoston jar tiedosto minefield sekä kansio resources samaan paikkaan. Minefield toimii vain, mikäli samassa hakemistossa on kuvat sisältävä resources tiedosto.
 
 ### Vaatimukset
 

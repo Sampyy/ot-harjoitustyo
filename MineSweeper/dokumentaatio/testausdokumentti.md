@@ -10,3 +10,7 @@ Sovelluslogiikan testauksen rivikattavuus on 98% ja haarautumakattavuus 94%.
 
 
 Haarautumakattavuudesta jää tarkistamatta että chooseCell kutsun yhteydessä tarkistetaan, onko voitettu tai hävitty. Kuitenkin voiton toiminta on tarkistettu toisessa testissä, ja häviön toiminta on tarkistettu sadoilla häviöillä.
+
+### Järjestelmätestaus
+
+Sovellus on manuaalisesti todettu toimivaksi käyttöohjeen mukaan ainakin windowsilla, sekä linuxilla.

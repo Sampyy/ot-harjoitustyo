@@ -72,14 +72,19 @@ public class Table extends JFrame {
         if (difficulty.getValue() != mines) {
             this.mines = difficulty.getValue() * size.getValue() * size.getValue() / 100;
         }    
-        this.board = new Board(this);
-            
+        this.board = new Board(this); 
         add(board, BorderLayout.CENTER);
         setTitle("Minesweeper");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         pack();
         setVisible(true);
+        prepareTable();
+    }
+    /**
+     * Prepares the table for a game
+     */
+    public void prepareTable() {
         placeCells();
         placeMines();
         setNumbers(this.table);
